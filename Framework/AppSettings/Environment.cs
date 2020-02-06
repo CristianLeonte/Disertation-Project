@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Tests.AppSettings
+namespace Framework.AppSettings
 {
     public class Environment
     {
@@ -11,9 +11,9 @@ namespace Tests.AppSettings
         public Environment(string webConfigKey)
         {
             var webConfigValue = GetAppConfigKeyValue(webConfigKey);
-            this.environmentURL = webConfigValue;
+            EnvironmentUrl = webConfigValue;
         }
 
-        public string environmentURL { get; set; }
+        public string EnvironmentUrl { get; set; }
     }
 }

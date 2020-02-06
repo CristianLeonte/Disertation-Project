@@ -1,4 +1,4 @@
-﻿namespace Tests.AppSettings
+﻿namespace Framework.AppSettings
 {
     public class Environments
     {

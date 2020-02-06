@@ -37,13 +37,14 @@ namespace Framework.CustomMethods
 
             try
             {
-                Logger.Write("### AT GlobalUtils: Taking screenshot [" + fileNamePath + "]", Logger.LogType.Info);
+                Logger.Write("Taking screenshot [" + fileNamePath + "]", Logger.LogType.Info);
 
                 var screenshot = ((ITakesScreenshot)Driver.MyDriver).GetScreenshot();
                 screenshot.SaveAsFile(fileNamePath, ScreenshotImageFormat.Jpeg);
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
             }
 
             return fileNamePath;

@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Tests.AppSettings
+namespace Framework.AppSettings
 {
     public class User
     {
@@ -11,8 +11,8 @@ namespace Tests.AppSettings
         public User(string webConfigKey)
         {
             var webConfigValue = GetAppConfigKeyValue(webConfigKey).Split('|');
-            this.Username = webConfigValue[0].Trim();
-            this.Password = webConfigValue[1].Trim();
+            Username = webConfigValue[0].Trim();
+            Password = webConfigValue[1].Trim();
         }
 
         public string Username { get; set; }

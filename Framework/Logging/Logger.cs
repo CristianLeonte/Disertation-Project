@@ -27,7 +27,7 @@ namespace Framework.Logging
 
             NotDefined
         }
-        private const string LogName = "Logger";
+
         private static ILog _log;
         public Logger()
         {

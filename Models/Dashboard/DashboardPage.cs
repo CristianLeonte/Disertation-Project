@@ -1,14 +1,27 @@
-﻿using OpenQA.Selenium;
+﻿using System.Collections.Generic;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
 namespace Models.Dashboard
 {
     public class DashboardPage : BaseModel
     {
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"inventory_filter_container\"]/div")]
+        [FindsBy(How = How.CssSelector, Using = ".product_label")]
         public IWebElement PageTitle { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "div#inventory_filter_container > .product_sort_container")]
+        [FindsBy(How = How.CssSelector, Using = ".product_sort_container")]
         public IWebElement ProductsFilterDropdown { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".inventory_item_name")]
+        public IList<IWebElement> ProductName { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".inventory_item_price")]
+        public IList<IWebElement> ProductPrice { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".btn_inventory.btn_primary")]
+        public IList<IWebElement> BtnAddToCart { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".btn_inventory.btn_secondary")]
+        public IList<IWebElement> BtnRemoveFromCart { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace Framework.CustomMethods
                     return true;
                 }
                 else
-                    return false; ;
+                    return false;
             }
             catch (Exception)
             {
@@ -38,7 +38,7 @@ namespace Framework.CustomMethods
                     return true;
                 }
                 else
-                    return false; ;
+                    return false;
             }
             catch (Exception)
             {
@@ -114,41 +114,7 @@ namespace Framework.CustomMethods
                     return true;
                 }
                 else
-                    return false; ;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public static bool IsElementLoadedInTable(IWebElement element)
-        {
-            try
-            {
-                if (element.Displayed && element.Enabled && element.Text != "-")
-                {// we need to call any method on the element in order to force Selenium to look it up
-                    return true;
-                }
-                else
-                    return false; ;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public static bool IsElementDeletedFromTable(IWebElement element)
-        {
-            try
-            {
-                if (element.Displayed && element.Enabled && element.Text == "-")
-                {// we need to call any method on the element in order to force Selenium to look it up
-                    return true;
-                }
-                else
-                    return false; ;
+                    return false;
             }
             catch (Exception)
             {
@@ -176,50 +142,10 @@ namespace Framework.CustomMethods
 
         }
 
-        public static void ExplicitWaitElementDeletedFromTable(IWebElement element)
-        {
-            for (int second = 0; ; second++)
-            {
-                if (second >= 15)
-                {
-                    //element not found, log the error
-                    break;
-                }
-                if (IsElementDeletedFromTable(element))
-                {
-                    //ok, we found the element
-                    HighlightElement(element);
-                    break;
-                }
-                Thread.Sleep(2000);
-            }
-
-        }
-
-        public static void ExplicitWaitElementAddedInTable(IWebElement element)
-        {
-            for (int second = 0; ; second++)
-            {
-                if (second >= 15)
-                {
-                    //element not found, log the error
-                    break;
-                }
-                if (IsElementLoadedInTable(element))
-                {
-                    //ok, we found the element
-                    HighlightElement(element);
-                    break;
-                }
-                Thread.Sleep(2000);
-            }
-
-        }
-
         public static void HighlightElement(IWebElement element)
         {
             IJavaScriptExecutor jse = (IJavaScriptExecutor)Driver.MyDriver;
-            jse.ExecuteScript("arguments[0].style.border='1px solid red'", element);
+            jse.ExecuteScript("arguments[0].style.border='2px solid green'", element);
         }
     }
 }

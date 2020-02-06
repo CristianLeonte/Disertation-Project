@@ -7,24 +7,28 @@ using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
-using Framework.Logging;
-using Tests.AppSettings;
+using System.Threading;
+using Framework.AppSettings;
 using Logger = Framework.Logging.Logger;
 using Screenshot = Framework.CustomMethods.Screenshot;
 
 namespace Tests
 {
     [TestFixture(typeof(ChromeDriver))]
-    public class GlobalBase<TWebDriver> where TWebDriver : IWebDriver, new()
+    public class TestBase<TWebDriver> where TWebDriver : IWebDriver, new()
     {
-        public ILogger Logger => new Logger();
+        public static Logger Logger { get; set; }
+
         public LoginPage LoginPage { get; set; }
 
         public void Login(User demoUser)
         {
             LoginPage.TxtUsername.SendText(demoUser.Username);
+            Thread.Sleep(500);
             LoginPage.TxtPassword.SendText(demoUser.Password);
+            Thread.Sleep(500);
             LoginPage.BtnLogin.ClickNavigator();
+            Thread.Sleep(500);
         }
 
         public void Logout()
@@ -32,17 +36,21 @@ namespace Tests
            Header header = new Header();
 
            header.BtnMenu.Clicks();
-           
-           MainMenu mainMenu = new MainMenu();
+           Thread.Sleep(500);
+
+            MainMenu mainMenu = new MainMenu();
 
            mainMenu.BtnLogout.ClickNavigator();
+           Thread.Sleep(500);
         }
 
         [SetUp]
         public virtual void SetUp()
         {
+            Logger = new Logger();
+
             BrowserMethods<TWebDriver>.BrowserInstance();
-            Driver.MyDriver.Navigate().GoToUrl(Environments.TestEnvironment.environmentURL);
+            Driver.MyDriver.Navigate().GoToUrl(Environments.TestEnvironment.EnvironmentUrl);
 
             LoginPage = new LoginPage();
 
@@ -61,7 +69,7 @@ namespace Tests
 
                     var filePath = Screenshot.TakeScreenshot(String.Empty, string.Empty);
 
-                    throw new Exception("### AT: " + error + "\nScreenshot file path: " + filePath + "\n");
+                    throw new Exception("" + error + "\nScreenshot file path: " + filePath + "\n");
                 }
             }
             catch (Exception e)

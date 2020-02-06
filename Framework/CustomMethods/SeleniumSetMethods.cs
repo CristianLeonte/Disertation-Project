@@ -33,12 +33,12 @@ namespace Framework.CustomMethods
 				}
 				catch (StaleElementReferenceException e)
 				{
-					_log.Error($"Following error is throw {e}");
+					_log.Error($"Following error is thrown {e}");
 				}
 
 				catch (NoSuchElementException e)
 				{
-					_log.Error($"Following error is throw {e}");
+					_log.Error($"Following error is thrown {e}");
 				}
 
 				return false;
@@ -95,16 +95,5 @@ namespace Framework.CustomMethods
             Driver.MyDriver.WaitForPageLoad();
 		}
 
-		/// <summary>
-		/// Extended method to select a dropdown control
-		/// </summary>
-		/// <param name="element"></param>
-		/// <param name="value"></param>
-		public static void SelectDropDown(this IWebElement element, string value)
-		{
-            Driver.MyDriver.WaitForPageLoad();
-			GenericMethods.ExplicitWaitElementVisible(element);
-			new SelectElement(element).SelectByText(value);
-		}
 	}
 }
