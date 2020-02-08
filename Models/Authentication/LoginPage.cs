@@ -1,5 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using Framework.AppSettings;
+using Framework.CustomMethods;
+using Models.Common;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using System.Threading;
 
 namespace Models.Authentication
 {
@@ -16,5 +20,30 @@ namespace Models.Authentication
 
         [FindsBy(How = How.CssSelector, Using = ".bot_column")]
         public IWebElement BotPicture { get; set; }
+
+        public void Login(User demoUser)
+        {
+            TxtUsername.SendText(demoUser.Username);
+            Thread.Sleep(500);
+            TxtPassword.SendText(demoUser.Password);
+            Thread.Sleep(500);
+            BtnLogin.ClickNavigator();
+            Thread.Sleep(500);
+        }
+
+        public void Logout()
+        {
+            Header header = new Header();
+
+            header.BtnMenu.Clicks();
+
+            Thread.Sleep(500);
+
+            MainMenu mainMenu = new MainMenu();
+
+            mainMenu.BtnLogout.ClickNavigator();
+
+            Thread.Sleep(500);
+        }
     }
 }

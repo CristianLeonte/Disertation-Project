@@ -90,7 +90,7 @@
     <Compile Include="CheckoutPage\PersonalInformationPage.cs" />
     <Compile Include="Common\Header.cs" />
     <Compile Include="Common\MainMenu.cs" />
-    <Compile Include="Dashboard\DashboardPage.cs" />
+    <Compile Include="DashboardPage\DashboardPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

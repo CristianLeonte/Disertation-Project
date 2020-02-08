@@ -4,7 +4,7 @@ using Framework.Utils;
 using Models.CartPage;
 using Models.CheckoutPage;
 using Models.Common;
-using Models.Dashboard;
+using Models.DashboardPage;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
@@ -24,7 +24,7 @@ namespace Tests
         {
             Assert.AreEqual("Products", DashboardPage.PageTitle.GetText());
 
-            Logout();
+            LoginPage.Logout();
 
             Assert.True(LoginPage.BotPicture.Displayed);
         }
@@ -34,7 +34,7 @@ namespace Tests
         {
             Assert.AreEqual("Productss", DashboardPage.PageTitle.GetText());
 
-            Logout();
+            LoginPage.Logout();
 
             Assert.True(LoginPage.BotPicture.Displayed);
         }
@@ -90,7 +90,7 @@ namespace Tests
 
             Assert.AreEqual("THANK YOU FOR YOUR ORDER", CheckoutPage.ConfirmationPage.TxtOrderConfirmation.GetText());
 
-            Logout();
+            LoginPage.Logout();
 
             Thread.Sleep(1000);
 
@@ -147,7 +147,7 @@ namespace Tests
 
             Thread.Sleep(1000);
 
-            Logout();
+            LoginPage.Logout();
 
             Thread.Sleep(1000);
 
@@ -217,7 +217,7 @@ namespace Tests
 
             Assert.AreEqual("THANK YOU FOR YOUR ORDER", CheckoutPage.ConfirmationPage.TxtOrderConfirmation.GetText());
 
-            Logout();
+           LoginPage.Logout();
 
             Thread.Sleep(1000);
 

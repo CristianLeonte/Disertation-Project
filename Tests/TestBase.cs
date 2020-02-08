@@ -1,13 +1,11 @@
 ﻿using Framework.CustomMethods;
 using Framework.Utils;
 using Models.Authentication;
-using Models.Common;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
-using System.Threading;
 using Framework.AppSettings;
 using Logger = Framework.Logging.Logger;
 using Screenshot = Framework.CustomMethods.Screenshot;
@@ -21,29 +19,6 @@ namespace Tests
 
         public LoginPage LoginPage { get; set; }
 
-        public void Login(User demoUser)
-        {
-            LoginPage.TxtUsername.SendText(demoUser.Username);
-            Thread.Sleep(500);
-            LoginPage.TxtPassword.SendText(demoUser.Password);
-            Thread.Sleep(500);
-            LoginPage.BtnLogin.ClickNavigator();
-            Thread.Sleep(500);
-        }
-
-        public void Logout()
-        {
-           Header header = new Header();
-
-           header.BtnMenu.Clicks();
-           Thread.Sleep(500);
-
-            MainMenu mainMenu = new MainMenu();
-
-           mainMenu.BtnLogout.ClickNavigator();
-           Thread.Sleep(500);
-        }
-
         [SetUp]
         public virtual void SetUp()
         {
@@ -54,7 +29,7 @@ namespace Tests
 
             LoginPage = new LoginPage();
 
-            Login(Users.DemoUser);
+            LoginPage.Login(Users.DemoUser);
         }
 
 

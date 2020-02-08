@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
-namespace Models.Dashboard
+namespace Models.DashboardPage
 {
     public class DashboardPage : BaseModel
     {
